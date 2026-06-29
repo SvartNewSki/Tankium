@@ -6,7 +6,7 @@
             <h3>{{ $product->name }}</h3>
             <p>Наличие: {{ $product->amount }} шт.</p>
             <p>{{ $product->description }}</p>
-            <a href="/addToCart{{$product->id}}">добавить</a>
+            <a href="/addToCart/{{$product->id}}">добавить</a>
             
         </div>
     @endforeach

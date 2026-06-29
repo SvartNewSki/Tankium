@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [ProductController::class, 'index']) -> name('main');
-Route::get('/cart', [CartController::class, 'cart']) -> name('cart');
-Route::get('/addToCart{id}', [CartController::class, 'addToCart']) -> name('addToCart');
+Route::get('/cart', [CartController::class, 'index']) -> name('cart');
+Route::get('/addToCart/{id}', [CartController::class, 'addToCart']) -> name('addToCart');
