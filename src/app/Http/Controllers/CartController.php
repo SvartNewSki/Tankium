@@ -55,15 +55,15 @@ public function addToCart($id)
         $product = Product::findOrFail($id);
         $cart = Session::get('cart', []);
         
-        // Если товар уже есть в корзине, увеличиваем количество
-        if (isset($cart[$id])) {
+        // Проверяю, есть ли уже товар в корзину, если есть - добавляю квонтити
+        if(isset($cart[$id])){
             $cart[$id]['quantity']++;
+
         } else {
             $cart[$id] = [
                 'name' => $product->name,
                 'price' => $product->price,
                 'quantity' => 1,
-                'image' => $product->image ?? null
             ];
         }
         
@@ -82,5 +82,11 @@ public function addToCart($id)
         }
         
         return view('cart', compact('cart', 'total'));
+    }
+    public function buy(){
+        $cart = Session::get('cart', []);
+        
+       
+        return view('buy', compact('cart'));
     }
     }
