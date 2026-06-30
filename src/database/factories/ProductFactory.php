@@ -36,6 +36,7 @@ class ProductFactory extends Factory
     ];
         return [
             'name' => fake()->randomElement($itemsList),
+            'price' =>fake()->numberBetween(100, 500),
             'description'=>fake()->text(50),
             'amount'=>fake()->numberBetween(0, 10),
         ];
