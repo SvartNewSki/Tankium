@@ -29,18 +29,12 @@
                         <th>Цена</th>
                         <th>Количество</th>
                         <th>Сумма</th>
-                        <th>Действие</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($cart as $id => $item)
                         <tr>
                             <td>
-                                @if(isset($item['image']) && $item['image'])
-                                    <img src="{{ asset('storage/' . $item['image']) }}" 
-                                         alt="{{ $item['name'] }}" 
-                                         class="cart-item-image">
-                                @endif
                                 <span class="cart-item-name">{{ $item['name'] }}</span>
                             </td>
                             <td>{{ number_format($item['price'], 2) }} ₽</td>
@@ -67,7 +61,7 @@
             <div class="cart-actions">
                
                 <a href="{{ route('main') }}" class="btn-continue">Продолжить покупки</a>
-                <a href="#" class="btn-checkout">Оформить заказ</a>
+                <a href="/buy" class="btn-checkout">Оформить заказ</a>
             </div>
         @endif
     </div>
