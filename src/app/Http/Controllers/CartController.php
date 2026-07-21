@@ -61,6 +61,7 @@ public function addToCart($id)
 
         } else {
             $cart[$id] = [
+                'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
                 'quantity' => 1,
@@ -86,7 +87,22 @@ public function addToCart($id)
     public function buy(){
         $cart = Session::get('cart', []);
         
-       
-        return view('buy', compact('cart'));
+        // dump ($cart);
+        // dump($cart['quantity']);
+        
+        foreach ($cart as $i){
+            // dump($id['name']);
+            $stock = Product::findorfail('id', $i['id']);
+            dump($stock);
+            // dump($cart['quantity']);
+        }
+        
+
+        // foreach ($cart as $id) {
+        //     dump ($cart[$id]);
+        // }
+        
+        // dump ($stock);
+        // return view('buy');
     }
     }
