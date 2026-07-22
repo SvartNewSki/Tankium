@@ -86,15 +86,17 @@ public function addToCart($id)
     }
     public function buy(){
         $cart = Session::get('cart', []);
-        
-        // dump ($cart);
-        // dump($cart['quantity']);
-        
-        foreach ($cart as $i){
-            // dump($id['name']);
-            $stock = Product::findorfail('id', $i['id']);
-            dump($stock);
-            // dump($cart['quantity']);
+        foreach ($cart as $id){
+            // dump ($id);
+            $stock = Product::find($id['id']);
+            if ($stock) {
+                 
+                $stock->amount = $stock->amount - $id['quantity'];
+                $stock->save();
+            }
+            dump ($stock->amount);
+            $cart = Session::flush();
+            return view('/');
         }
         
 
