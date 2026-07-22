@@ -1,0 +1,1 @@
+при переходе return view('/') переходит на /buy, и в каком-то случае выдаёт undefined $products из @foreach $products 
