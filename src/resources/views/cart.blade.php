@@ -1,30 +1,25 @@
-{{-- @extends('layouts.main')
-    @section('content')
-    CART
-    {{$cart = 5}}
-    <p>{{$cart}}</p>
-@endsection
-</body>
-</html> --}}
 @extends('layouts.main')
 
 @section('content')
     <div class="cart-container">
         <h1>Корзина</h1>
-        
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
-        
+        @session('errorNE')
+            {{session('errorNE')}}
+        @endsession
+        @endif
         @if(empty($cart))
-            <div class="empty-cart">
-                <p>Ваша корзина пуста</p>
-                <a href="{{ route('main') }}" class="btn-continue-shopping">Продолжить покупки</a>
-            </div>
+        <div class="empty-cart">
+            <p>Ваша корзина пуста</p>
+            
+            <a href="{{ route('main') }}" class="btn-continue">Продолжить покупки</a>
+        </div>
         @else
-            <table class="cart-table">
-                <thead>
-                    <tr>
+        <table class="cart-table">
+            <thead>
+                <tr>
                         <th>Товар</th>
                         <th>Цена</th>
                         <th>Количество</th>
@@ -62,6 +57,7 @@
                
                 <a href="{{ route('main') }}" class="btn-continue">Продолжить покупки</a>
                 <a href="/buy" class="btn-checkout">Оформить заказ</a>
+                <a href="/clear" class="btn-checkout">Очистить корзину</a>
             </div>
         @endif
     </div>
