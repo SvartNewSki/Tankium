@@ -2,6 +2,6 @@
 
 @section('content')
 Вы купили всё из корзины
-{{-- @foreach ($cart as $item)
-var_dump $item --}}
+    <a href="{{ route('main') }}" class="btn-continue">Продолжить покупки</a>
+
 @endsection
