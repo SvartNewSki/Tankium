@@ -42,21 +42,24 @@ public function addToCart($id)
         return redirect()->back()->with('success', 'Товар "' . $product->name . '" добавлен в корзину!');
     }
     public function buy(){
+        $notEnough = [];
+        $ava = [];
         $cart = Session::get('cart', []);
         foreach ($cart as $id){
             $stock = Product::find($id['id']);
             if ($stock->amount >= 1) {
                 $stock->amount = $stock->amount - $id['quantity'];
                 $stock->save();
+                $ava[] = $stock->name;
+                // continue;
             }
             else{
-                $notEnough = ($id);
-                dump ($notEnough['name']);
-                return redirect()->back()->with('errorNE', 'Товар' . $notEnough['name'] . 'закончился на складе');
+                $notEnough[] = $stock->name;
+                continue;
             }
-            $cart = Session::flush();
-            return view('buy');
-        }
+        }   
+            return redirect()->back()->with('errorNE', $notEnough)->with('ava', $ava);
+
     }
     public function clear(){
         $cart = Session::flush();
