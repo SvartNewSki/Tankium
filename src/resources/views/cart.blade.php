@@ -3,17 +3,28 @@
 @section('content')
     <div class="cart-container">
         <h1>Корзина</h1>
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+        @php
+            $notEnough = session('errorNE');
+            $ava = session('ava');
+        @endphp
+        @if (!empty($notEnough))
+            <h3>Товар закончился:</h3>
+            @foreach ($notEnough as $i)
+                {{ $i }};
+                <br>                
+            @endforeach
         @endif
-        @session('errorNE')
-            {{session('errorNE')}}
-        @endsession
+        {{-- @dd($ava) --}}
+        
+        @if (!empty($ava))
+            <h3>Вы купили:</h3>
+            @foreach ($ava as $i)
+                {{$i}}
+            @endforeach
         @endif
         @if(empty($cart))
         <div class="empty-cart">
             <p>Ваша корзина пуста</p>
-            
             <a href="{{ route('main') }}" class="btn-continue">Продолжить покупки</a>
         </div>
         @else
