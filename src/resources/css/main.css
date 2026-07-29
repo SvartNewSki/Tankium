@@ -1,8 +1,9 @@
 *{
-    /* color: red; */
+    /* background-color: blue; */
+    background-color:darkslateblue
 
 }
-span{
+span.del{
     color: red;
     
 }
