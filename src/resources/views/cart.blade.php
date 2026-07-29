@@ -14,7 +14,6 @@
                 <br>                
             @endforeach
         @endif
-        {{-- @dd($ava) --}}
         
         @if (!empty($ava))
             <h3>Вы купили:</h3>
