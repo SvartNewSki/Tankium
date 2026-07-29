@@ -8,5 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProductController::class, 'index']) -> name('main');
 Route::get('/cart', [CartController::class, 'index']) -> name('cart');
 Route::get('/addToCart/{id}', [CartController::class, 'addToCart']) -> name('addToCart');
+Route::get('/item/{id}', [ProductController::class, 'item']) -> name('item');
 Route::get('/buy', [CartController::class, 'buy']) ->name ('buy');
 Route::get('/clear',[CartController::class, 'clear']) ->name ('clear');
