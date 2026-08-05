@@ -30,11 +30,11 @@
         <table class="cart-table">
             <thead>
                 <tr>
-                        <th>Товар</th>
-                        <th>Цена</th>
-                        <th>Количество</th>
-                        <th>Сумма</th>
-                    </tr>
+                    <th>Товар</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Сумма</th>
+                </tr>
                 </thead>
                 <tbody>
                     @foreach($cart as $id => $item)
@@ -64,7 +64,6 @@
             </table>
             
             <div class="cart-actions">
-               
                 <a href="{{ route('main') }}" class="btn-continue">Продолжить покупки</a>
                 <a href="/buy" class="btn-checkout">Оформить заказ</a>
                 <a href="/clear" class="btn-checkout">Очистить корзину</a>

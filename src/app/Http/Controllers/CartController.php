@@ -66,7 +66,7 @@ class CartController extends Controller{
             return redirect()->back()->with('errorNE', $notEnough)->with('ava', $ava);
 
     }
-    public function clear(){
+    public function clearCart(){
         $cart = Session::flush();
         return redirect()->back();
     }

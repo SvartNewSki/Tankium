@@ -9,11 +9,18 @@
             <p>Наличие: {{ $product->amount }} шт.</p>
             <p>{{ $product->description }}</p>
             @if ($product->amount >= 1)
-            <a href="/addToCart/{{$product->id}}">добавить</a>
+            <form action="/cart/add/{{$product->id}}" method="POST">
+                @csrf
+                <button type="submit">Добавить в корзину</button>
+            </form>
             @else 
             Товар закончился
             @endif
-            <a href="/clear"><span class="del">Удалить</span>_clear_<span class="del">Удалить</span></a>
+            {{-- <a href="/clear"><span class="del">Удалить</span>_clear_<span class="del">Удалить</span></a> --}}
+            <form action="/cart/clear" method="POST">
+            @csrf
+            <button type="submit">Очистить корзину</button>
+            </form>
         </div>
     @endforeach
 </div>
